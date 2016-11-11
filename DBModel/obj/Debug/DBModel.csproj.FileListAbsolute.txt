@@ -1,0 +1,9 @@
+C:\Users\halle\Documents\NetClass\RecDashboard\DBModel\bin\Debug\DBModel.dll.config
+C:\Users\halle\Documents\NetClass\RecDashboard\DBModel\bin\Debug\DBModel.dll
+C:\Users\halle\Documents\NetClass\RecDashboard\DBModel\bin\Debug\DBModel.pdb
+C:\Users\halle\Documents\NetClass\RecDashboard\DBModel\bin\Debug\EntityFramework.dll
+C:\Users\halle\Documents\NetClass\RecDashboard\DBModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\halle\Documents\NetClass\RecDashboard\DBModel\bin\Debug\EntityFramework.xml
+C:\Users\halle\Documents\NetClass\RecDashboard\DBModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\halle\Documents\NetClass\RecDashboard\DBModel\obj\Debug\DBModel.dll
+C:\Users\halle\Documents\NetClass\RecDashboard\DBModel\obj\Debug\DBModel.pdb

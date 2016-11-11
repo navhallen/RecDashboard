@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Recreation_Respite_Dabase_finalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Articles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Diagnosis">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Events">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="location" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Number_Participant" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Feedbacks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Participants">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Last_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="age" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="gender" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="diagnosis" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="program_interest" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="notes" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="user_informationId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Registrations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Last_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="age" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="contact" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="program_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="location" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="payment_type" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="recreational_interest" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="special_needs" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="exception_goals" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="allergies" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ParticipantId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user_information">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="First_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Last_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="phone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="city" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="region" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_FeedbackUser">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Feedbacks" Type="Self.Feedbacks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Feedbacks">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RegistrationParticipant">
+    <End Role="Participants" Type="Self.Participants" Multiplicity="1" />
+    <End Role="Registrations" Type="Self.Registrations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participants">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Registrations">
+        <PropertyRef Name="ParticipantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_informationParticipant">
+    <End Role="user_information" Type="Self.user_information" Multiplicity="1" />
+    <End Role="Participants" Type="Self.Participants" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user_information">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Participants">
+        <PropertyRef Name="user_informationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Useruser_information">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="user_information" Type="Self.user_information" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="user_information">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Recreation_Respite_Dabase_finalModelStoreContainer">
+    <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Diagnosis" EntityType="Self.Diagnosis" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedbacks" EntityType="Self.Feedbacks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Participants" EntityType="Self.Participants" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Registrations" EntityType="Self.Registrations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user_information" EntityType="Self.user_information" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_FeedbackUser" Association="Self.FK_FeedbackUser">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Feedbacks" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RegistrationParticipant" Association="Self.FK_RegistrationParticipant">
+      <End Role="Participants" EntitySet="Participants" />
+      <End Role="Registrations" EntitySet="Registrations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_informationParticipant" Association="Self.FK_user_informationParticipant">
+      <End Role="user_information" EntitySet="user_information" />
+      <End Role="Participants" EntitySet="Participants" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Useruser_information" Association="Self.FK_Useruser_information">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="user_information" EntitySet="user_information" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
